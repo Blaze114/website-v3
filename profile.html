@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+</head>
+<body>
+    <h2>Användarinformation</h2>
+    <div id="user-info">
+        <!-- Här kommer användarinformationen att visas -->
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Hämta URL-parametrar (E-post och lösenord)
+            var params = new URLSearchParams(window.location.search);
+            var email = params.get('email');
+            var password = params.get('password');
+
+            // Visa användarinformation på sidan
+            var userInfo = document.getElementById('user-info');
+            userInfo.innerHTML = "<p><strong>E-post:</strong> " + email + "</p>";
+            userInfo.innerHTML += "<p><strong>Lösenord:</strong> " + password + "</p>";
+        }
+    </script>
+</body>
+</html>

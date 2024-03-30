@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inloggning</title>
+</head>
+<body>
+<h2>Inloggning</h2>
+<form id="login-form">
+    <label for="email">E-post:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    <label for="password">Lösenord:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <button type="submit">Logga in</button>
+</form>
+
+<script>
+document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    
+    var users = JSON.parse(localStorage.getItem("users")) || [];
+    var found = false;
+    
+    users.forEach(function(user) {
+        if (user.email === email && user.password === password) {
+            found = true;
+            return;
+        }
+    });
+    
+    if (found) {
+        alert("Inloggning lyckades!");
+        window.location.href = "profile.html?email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password);
+    } else {
+        alert("Fel e-postadress eller lösenord.");
+    }
+});
+</script>
+</body>
+</html>

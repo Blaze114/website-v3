@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inloggning</title>
+</head>
+<body>
+    <h2>Inloggning</h2>
+    <form id="login-form">
+        <label for="email">E-post:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Lösenord:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="button" onclick="login()">Logga in</button>
+    </form>
+
+    <script>
+        function login() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Skicka användarinformation till profilsidan
+            window.location.href = "profile.html?email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password);
+        }
+    </script>
+</body>
+</html>
